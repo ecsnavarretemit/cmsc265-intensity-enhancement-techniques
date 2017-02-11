@@ -20,4 +20,16 @@ def adjust_gamma(img, gamma=1.0):
   # apply gamma correction using the lookup table
   return cv2.LUT(img, table)
 
+def equalize_histogram(img):
+  # dont modify the original
+  img = img.copy()
+
+  img_yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
+
+  # equalize the histogram of the Y channel
+  img_yuv[:, :, 0] = cv2.equalizeHist(img_yuv[:, :, 0])
+
+  # convert the YUV image back to RGB format
+  return cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
+
 
