@@ -6,6 +6,7 @@
 
 import os
 import cv2
+import math
 import numpy as np
 
 def adjust_gamma(img, gamma=1.0):
@@ -18,6 +19,17 @@ def adjust_gamma(img, gamma=1.0):
   table = np.array([((i / 255.0) ** inv_gamma) * 255 for i in np.arange(0, 256)]).astype("uint8")
 
   # apply gamma correction using the lookup table
+  return cv2.LUT(img, table)
+
+def log_transform(img, constant_val=20):
+  # dont modify the original
+  img = img.copy()
+
+  # build a lookup table mapping the pixel values [0, 255] to
+  # their logarithmic values
+  table = np.array([constant_val * math.log(1 + i) for i in np.arange(0, 256)]).astype("uint8")
+
+  # apply log function using the lookup table
   return cv2.LUT(img, table)
 
 def equalize_histogram(img):
