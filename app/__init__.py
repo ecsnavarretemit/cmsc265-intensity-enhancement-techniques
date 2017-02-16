@@ -14,7 +14,7 @@ def im2double(im):
 
   return im.astype(np.float) / info.max # Divide all values by the largest possible value in the datatype
 
-def adjust_gamma(img, gamma=1.0):
+def inverse_gamma_correction(img, gamma=1.0):
   # dont modify the original
   img = img.copy()
 
@@ -25,6 +25,15 @@ def adjust_gamma(img, gamma=1.0):
 
   # apply gamma correction using the lookup table
   return cv2.LUT(img, table)
+
+def gamma_correction(img, gamma=1.0):
+  # dont modify the original
+  img = img.copy()
+
+  img = im2double(img)
+  img = cv2.pow(img, gamma)
+
+  return np.uint8(img * 255)
 
 def log_transform(img, constant_val=1):
   # dont modify the original
