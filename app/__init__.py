@@ -9,6 +9,11 @@ import cv2
 import math
 import numpy as np
 
+def im2double(im):
+  info = np.iinfo(im.dtype) # Get the data type of the input image
+
+  return im.astype(np.float) / info.max # Divide all values by the largest possible value in the datatype
+
 def adjust_gamma(img, gamma=1.0):
   # dont modify the original
   img = img.copy()
@@ -21,16 +26,13 @@ def adjust_gamma(img, gamma=1.0):
   # apply gamma correction using the lookup table
   return cv2.LUT(img, table)
 
-def log_transform(img, constant_val=20):
+def log_transform(img, constant_val=1):
   # dont modify the original
   img = img.copy()
 
-  # build a lookup table mapping the pixel values [0, 255] to
-  # their logarithmic values
-  table = np.array([constant_val * math.log(1 + i) for i in np.arange(0, 256)]).astype("uint8")
+  double_img = im2double(img)
 
-  # apply log function using the lookup table
-  return cv2.LUT(img, table)
+  return constant_val * np.log(1 + double_img)
 
 def equalize_histogram(img):
   # dont modify the original
