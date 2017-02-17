@@ -62,4 +62,16 @@ def equalize_histogram_grayscale(img):
   # equalize the histogram of the Y channel
   return cv2.equalizeHist(img)
 
+def stretch_histogram_percentile(im, min_percentile=1, max_percentile=99):
+  # dont modify the original
+  im = im.copy()
+  info = np.iinfo(im.dtype) # Get the data type of the input image
+
+  min_dec = math.floor(info.max * (min_percentile / 100))
+  max_dec = math.floor(info.max * (max_percentile / 100))
+
+  cv2.normalize(im, im, alpha=min_dec, beta=max_dec, norm_type=cv2.NORM_MINMAX)
+
+  return im
+
 
