@@ -43,7 +43,7 @@ def log_transform(img, constant_val=1):
 
   return constant_val * np.log(1 + double_img)
 
-def equalize_histogram(img):
+def equalize_histogram_color(img):
   # dont modify the original
   img = img.copy()
 
@@ -54,5 +54,12 @@ def equalize_histogram(img):
 
   # convert the YUV image back to RGB format
   return cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
+
+def equalize_histogram_grayscale(img):
+  # dont modify the original
+  img = img.copy()
+
+  # equalize the histogram of the Y channel
+  return cv2.equalizeHist(img)
 
 
