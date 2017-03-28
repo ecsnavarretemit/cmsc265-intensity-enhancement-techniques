@@ -28,17 +28,17 @@ plt.hist(cv_image.ravel(), 256, [0, 256], label="Input Image")
 plt.hist(img_output.ravel(), 256, [0, 256], label="Output Image")
 plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=2, mode="expand", borderaxespad=0.)
 
-# # save to file system
-# plt.savefig(f"{save_folder}/chart.png")
-# cv2.imwrite(f"{save_folder}/original.jpg", cv_image)
-# cv2.imwrite(f"{save_folder}/equalized.jpg", img_output)
+# save to file system
+plt.savefig(f"{save_folder}/chart.png")
+cv2.imwrite(f"{save_folder}/original.jpg", cv_image)
+cv2.imwrite(f"{save_folder}/equalized.jpg", img_output)
 
 # # add labels to the images
 # cv2.putText(cv_image, "Original", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
 # cv2.putText(img_output, "Equalized", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
 
-plt.show()
 # cv2.imshow('Result', np.hstack([cv_image, img_output]))
+# plt.show()
 # cv2.waitKey(0)
 
 

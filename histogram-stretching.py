@@ -8,6 +8,7 @@ import os
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
+from app import stretch_histogram_percentile
 
 # read the image file
 image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
