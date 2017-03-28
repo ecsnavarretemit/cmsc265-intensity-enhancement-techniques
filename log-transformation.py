@@ -10,11 +10,7 @@ import numpy as np
 from app import log_transform
 
 # read the image file
-image = os.path.join(os.getcwd(), "assets/images-small/outdoor/morning/DSC_0380.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/noon/DSC_0389.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/afternoon/DSC_0400.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/evening/DSC_0412.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
+image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
 
 cv_image = cv2.imread(image)
 
@@ -22,7 +18,7 @@ height, width, _ = cv_image.shape
 gray_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
 
 # resolve the output folder
-save_folder = os.path.join(os.getcwd(), "out/log-transform/outdoor/morning")
+save_folder = os.path.join(os.getcwd(), "out/log-transform/indoor")
 if not os.path.exists(save_folder):
   os.makedirs(save_folder)
 

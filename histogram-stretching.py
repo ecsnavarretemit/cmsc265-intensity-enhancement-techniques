@@ -10,23 +10,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # read the image file
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/morning/DSC_0380.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/noon/DSC_0389.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/afternoon/DSC_0400.JPG")
-image = os.path.join(os.getcwd(), "assets/images-small/outdoor/evening/DSC_0412.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
-
-# image = os.path.join(os.getcwd(), "assets/test/graylevel3.jpg")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/afternoon/DSC_0394.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/afternoon/DSC_0421.JPG")
+image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
 
 cv_image = cv2.imread(image, cv2.IMREAD_GRAYSCALE)
-# stretched_image = stretch_histogram(cv_image.copy())
-# stretched_image = stretch_histogram_percentile(cv_image.copy(), 7.8125, 78.125)
 stretched_image = stretch_histogram_percentile(cv_image.copy(), 5, 99)
 
 # resolve the output folder
-save_folder = os.path.join(os.getcwd(), "out/histogram-stretching/outdoor/evening")
+save_folder = os.path.join(os.getcwd(), "out/histogram-stretching/indoor")
 if not os.path.exists(save_folder):
   os.makedirs(save_folder)
 
