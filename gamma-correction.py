@@ -2,7 +2,7 @@
 #
 # Copyright(c) Exequiel Ceasar Navarrete <esnavarrete1@up.edu.ph>
 # Licensed under MIT
-# Version 1.0.0-alpha1
+# Version 1.0.0
 
 import os
 import cv2
@@ -10,16 +10,12 @@ import numpy as np
 from app import gamma_correction
 
 # read the image file
-image = os.path.join(os.getcwd(), "assets/images-small/outdoor/morning/DSC_0380.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/noon/DSC_0389.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/afternoon/DSC_0400.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/outdoor/evening/DSC_0412.JPG")
-# image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
+image = os.path.join(os.getcwd(), "assets/images-small/indoor/DSC_0416.JPG")
 
 cv_image = cv2.imread(image, 0)
 
 # resolve the output folder
-save_folder = os.path.join(os.getcwd(), "out/power-law-transform/outdoor/morning")
+save_folder = os.path.join(os.getcwd(), "out/power-law-transform/indoor")
 if not os.path.exists(save_folder):
   os.makedirs(save_folder)
 
